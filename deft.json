@@ -1,0 +1,12 @@
+{
+  "destination": {
+    "js": "source/javascripts/js",
+    "css": "source/stylesheets/lib"
+  },
+
+  "dependencies": [
+    ["twbs/bootstrap", "v3.0.2", "dist/css/bootstrap.css"],
+
+    ["michael/github", "v0.9.0", "github.js"]
+  ]
+}

@@ -1,0 +1,29 @@
+@import "lib/bootstrap";
+
+header, nav, main {
+  @extend .container;
+}
+
+body {
+  & > nav {
+    @extend .navbar, .navbar-default;
+    
+    ul {
+      @extend .nav, .navbar-nav;
+    }
+  }
+}
+
+#create-function-form {
+  .field, .actions {
+    @extend .form-group;
+
+    input[type="text"], textarea {
+      @extend .form-control;
+    }
+
+    input[type="submit"] {
+      @extend .btn, .btn-primary;
+    }
+  }
+}
