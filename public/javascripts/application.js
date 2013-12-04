@@ -12,10 +12,22 @@ window.addEventListener('load', function() {
   }
 
   forEach(document.querySelectorAll('textarea.code-mirror-placeholder'), function(textarea) {
-    CodeMirror.fromTextArea(textarea, {
+    var options = {
       mode: 'javascript',
       lineNumbers: true
-    });
+    };
+
+    var reaodnly = textarea.getAttribute('data-readonly')
+    if (reaodnly) {
+      options.readOnly = reaodnly;
+    }
+
+    var editor = CodeMirror.fromTextArea(textarea, options);
+
+    if (reaodnly) {
+      editor.getWrapperElement().className += ' readonly';
+      editor.getWrapperElement().querySelector('.CodeMirror-scroll').className += ' readonly';
+    }
   });
 
   forEachIn(this.charts || {}, function(title, config) {

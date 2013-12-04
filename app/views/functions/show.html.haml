@@ -12,7 +12,7 @@
   .column
     %h2 Example
 
-    %pre!= @function.example
+    = readonly_code_mirror(:example, :value => @function.example)
 
     = link_to('Implement', "/functions/#{@function.id}/implement", :class => 'action')
 
@@ -24,7 +24,7 @@
         = link_to(implementation.user.name, "/users/#{implementation.user_id}")
         %small= "#{time_ago_in_words(implementation.created_at)} ago"
 
-      %pre!= implementation.source
+      = readonly_code_mirror(:example, :value => implementation.source)
 
       %p
         = pluralize(implementation.upvotes.count, 'upvote')

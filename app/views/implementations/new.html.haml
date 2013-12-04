@@ -5,7 +5,7 @@
 .two-column
   .column
     %h2 Example
-    %pre!= @function.example
+    = readonly_code_mirror(:example, :value => @function.example)
 
   .column
     %h2 Implementation

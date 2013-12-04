@@ -8,4 +8,4 @@
   = pluralize(@implementation.upvotes.count, 'upvote')
   = link_to('Upvote', "/implementations/#{@implementation.id}/upvote", :class => 'upvote')
 
-%pre!= @implementation.source
+= readonly_code_mirror(:source, :value => @implementation.source)

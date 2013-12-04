@@ -6838,13 +6838,14 @@ nav {
 
 .CodeMirror {
   height: auto;
-  padding: 0; }
+  padding: 0;
+  margin-bottom: 15px; }
 
 .CodeMirror-scroll {
   overflow-x: auto;
   overflow-y: hide; }
 
-.CodeMirror, .CodeMirror-scroll {
+.CodeMirror:not(.readonly), .CodeMirror-scroll:not(.readonly) {
   min-height: 200px; }
 
 .CodeMirror-empty {
