@@ -15,6 +15,11 @@
       "lib/codemirror.css": "codemirror.css",
       "mode/javascript/javascript.js": "codemirror/javascript.js",
       "addon/display/placeholder.js": "codemirror/placeholder.js"
+    }],
+
+    ["http://code.highcharts.com/", {
+      "highcharts.js": "highcharts.js",
+      "adapters/standalone-framework.js": "highcharts/standalone-framework.js"
     }]
   ]
 }
