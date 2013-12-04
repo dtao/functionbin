@@ -11,5 +11,6 @@ module FunctionBin
 
     belongs_to :user
     belongs_to :function
+    has n, :upvotes
   end
 end

@@ -10,5 +10,10 @@ module FunctionBin
 
     has n, :functions
     has n, :implementations
+    has n, :upvotes
+
+    def upvoted?(implementation)
+      !!self.upvotes.first(:implementation_id => implementation.id)
+    end
   end
 end

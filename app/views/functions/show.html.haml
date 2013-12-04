@@ -6,8 +6,24 @@
 
 %p= @function.description
 
-%h2 Example
+.two-column
+  .column
+    %h2 Example
 
-%pre!= @function.example
+    %pre!= @function.example
 
-= link_to('Implement', "/functions/#{@function.id}/implement", :class => 'action')
+    = link_to('Implement', "/functions/#{@function.id}/implement", :class => 'action')
+
+  .column
+    %h2 Implementations
+
+    - @function.implementations.each do |implementation|
+      %h3
+        = link_to(implementation.user.name, "/users/#{implementation.user_id}")
+        %small= "#{time_ago_in_words(implementation.created_at)} ago"
+
+      %pre!= implementation.source
+
+      %p
+        = pluralize(implementation.upvotes.count, 'upvote')
+        = link_to('Upvote', "/implementations/#{implementation.id}/upvote", :class => 'upvote')

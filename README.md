@@ -3,7 +3,7 @@ This is a repository for JavaScript functions. Think of it as a package manager-
 ## Web UI
 
 - [x] allow users to specify and/or implement specific functionality.
-- [ ] let users vote on different implementations of the same spec
+- [x] let users vote on different implementations of the same spec
 - [ ] display charts indicating popularity and benchmark results for top implementations
 
 ## API
