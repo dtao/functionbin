@@ -1,0 +1,15 @@
+%h1= "Implement #{@function.name}"
+
+%p= @function.description
+
+.two-column
+  .column
+    %h2 Example
+    %pre!= @function.example
+
+  .column
+    %h2 Implementation
+    = form_tag('/implementations') do
+      = hidden_field_tag(:function_id, :value => @function.id)
+      .field= code_mirror(:source)
+      .field= submit_tag

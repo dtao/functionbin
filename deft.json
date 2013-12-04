@@ -1,0 +1,20 @@
+{
+  "destination": {
+    "js": "public/javascripts/lib",
+    "css": "public/stylesheets/lib",
+    "scss": "app/stylesheets/lib"
+  },
+
+  "dependencies": [
+    ["http://bootswatch.com/yeti/", {
+      "bootstrap.css": "bootstrap.scss"
+    }],
+
+    ["marijnh/codemirror", "v3.12", {
+      "lib/codemirror.js": "codemirror.js",
+      "lib/codemirror.css": "codemirror.css",
+      "mode/javascript/javascript.js": "codemirror/javascript.js",
+      "addon/display/placeholder.js": "codemirror/placeholder.js"
+    }]
+  ]
+}

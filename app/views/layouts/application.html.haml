@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title FunctionBin
+    / = stylesheet_link_tag("lib/bootstrap")
+    = stylesheet_link_tag("lib/codemirror")
+    = stylesheet_link_tag("application")
+    = javascript_include_tag("lib/codemirror")
+    = javascript_include_tag("lib/codemirror/javascript")
+    = javascript_include_tag("lib/codemirror/placeholder")
+    = javascript_include_tag("application")
+
+  %body
+    %nav
+      %ul
+        %li= link_to('Home', '/')
+        %li= link_to('Functions', '/functions')
+        %li= if logged_in? then link_to('Log out', '/logout') else link_to('Log in', '/login') end
+
+    %main
+      = yield

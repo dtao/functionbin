@@ -1,0 +1,75 @@
+@import "lib/bootstrap";
+
+body {
+  padding-top: 60px;
+}
+
+nav {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+
+  ul {
+    @extend .nav, .nav-stacked;
+  }
+}
+
+main {
+  @extend .container;
+}
+
+header {
+  @extend .page-header;
+}
+
+table {
+  @extend .table;
+}
+
+form .field {
+  @extend .form-group;
+}
+
+input[type="text"], textarea {
+  @extend .form-control;
+}
+
+input[type="submit"] {
+  @extend .btn, .btn-primary;
+}
+
+a.action {
+  @extend .btn, .btn-info;
+}
+
+.CodeMirror {
+  @extend .form-control;
+
+  height: auto;
+  padding: 0;
+}
+
+.CodeMirror-scroll {
+  overflow-x: auto;
+  overflow-y: hide;
+}
+
+.CodeMirror, .CodeMirror-scroll {
+  min-height: 200px;
+}
+
+.CodeMirror-focused {
+  @extend .form-control:focus;
+}
+
+.CodeMirror-empty {
+  color: #ccc;
+}
+
+.two-column {
+  @extend .row;
+
+  & > * {
+    @extend .col-lg-6;
+  }
+}

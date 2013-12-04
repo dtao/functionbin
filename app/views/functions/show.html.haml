@@ -1,0 +1,13 @@
+%h1
+  = @function.name
+  %small
+    Proposed by
+    = link_to(@function.user.name, "/users/#{@function.user_id}")
+
+%p= @function.description
+
+%h2 Example
+
+%pre!= @function.example
+
+= link_to('Implement', "/functions/#{@function.id}/implement", :class => 'action')

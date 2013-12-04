@@ -1,0 +1,17 @@
+%h1 Functions
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th User
+      %th Created
+
+  %tbody
+    - @functions.each do |function|
+      %tr
+        %td= link_to(function.name, "/functions/#{function.id}")
+        %td= function.description
+        %td= link_to(function.user.name, "/users/#{function.user_id}")
+        %td= "#{time_ago_in_words(function.created_at)} ago"

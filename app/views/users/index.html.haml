@@ -1,0 +1,15 @@
+%h1 Users
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Functions
+      %th Joined
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to(user.name, "/users/#{user.id}")
+        %td= user.functions.count
+        %td= "#{time_ago_in_words(user.created_at)} ago"

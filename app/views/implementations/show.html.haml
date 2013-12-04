@@ -1,0 +1,7 @@
+%h1
+  = @implementation.function.name
+  %small
+    Implemented by
+    = link_to(@implementation.user.name, "/users/#{@implementation.user_id}")
+
+%pre!= @implementation.source

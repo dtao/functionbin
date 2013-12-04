@@ -1,0 +1,38 @@
+%h1= @user.name
+
+%p= "Joined #{time_ago_in_words(@user.created_at)} ago"
+
+.two-column
+  .column
+    %h2 Functions
+
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Description
+          %th Created
+
+      %tbody
+        - @user.functions.each do |function|
+          %tr
+            %td= link_to(function.name, "/functions/#{function.id}")
+            %td= function.description
+            %td= "#{time_ago_in_words(function.created_at)} ago"
+
+  .column
+    %h2 Implementations
+
+    %table
+      %thead
+        %tr
+          %th Function
+          %th Description
+          %th Implemented
+
+      %tbody
+        - @user.implementations.each do |implementation|
+          %tr
+            %td= link_to(implementation.function.name, "/functions/#{implementation.function_id}")
+            %td= implementation.function.description
+            %td= link_to(time_ago_in_words(implementation.created_at) + ' ago', "/implementations/#{implementation.id}")
