@@ -6833,6 +6833,9 @@ nav {
   line-height: 40px;
   text-align: center; }
 
+.popular-implementations {
+  height: 200px; }
+
 .CodeMirror {
   height: auto;
   padding: 0; }

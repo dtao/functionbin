@@ -6,6 +6,8 @@
 
 %p= @function.description
 
+.popular-implementations
+
 .two-column
   .column
     %h2 Example
@@ -27,3 +29,11 @@
       %p
         = pluralize(implementation.upvotes.count, 'upvote')
         = link_to('Upvote', "/implementations/#{implementation.id}/upvote", :class => 'upvote')
+
+:javascript
+  this.charts = {
+    'Popular Implementations': {
+      target: '.popular-implementations',
+      data: #{@popular_implementations_json}
+    }
+  };

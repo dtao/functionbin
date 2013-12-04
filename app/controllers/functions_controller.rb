@@ -6,6 +6,14 @@ FunctionBin::App.controllers :functions do
 
   get :index, :with => :id do |id|
     @function = FunctionBin::Function.get(id)
+
+    @popular_implementations_json = Oj.dump(@function.implementations.map { |impl|
+      {
+        'name' => impl.user.name,
+        'data' => [impl.upvotes.count]
+      }
+    })
+
     render(:'functions/show')
   end
 
