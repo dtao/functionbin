@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131204223920) do
+ActiveRecord::Schema.define(version: 20131205163617) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.string   "parent_type", null: false
+    t.integer  "parent_id",   null: false
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "functions", force: true do |t|
     t.integer  "user_id",                           null: false
@@ -21,18 +33,20 @@ ActiveRecord::Schema.define(version: 20131204223920) do
     t.integer  "implementations_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count",        default: 0
   end
 
   add_index "functions", ["name"], name: "index_functions_on_name", unique: true
   add_index "functions", ["user_id"], name: "index_functions_on_user_id"
 
   create_table "implementations", force: true do |t|
-    t.integer  "user_id",                 null: false
-    t.integer  "function_id",             null: false
-    t.text     "source",                  null: false
-    t.integer  "score",       default: 0
+    t.integer  "user_id",                    null: false
+    t.integer  "function_id",                null: false
+    t.text     "source",                     null: false
+    t.integer  "score",          default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "comments_count", default: 0
   end
 
   add_index "implementations", ["function_id"], name: "index_implementations_on_function_id"

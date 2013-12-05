@@ -19,6 +19,12 @@ class FunctionsController < ApplicationController
     redirect_to(function)
   end
 
+  def comment
+    function = Function.find(params[:id])
+    current_user.comments.create!(:parent => function, :content => params[:content])
+    redirect_to(function)
+  end
+
   private
 
   def function_params

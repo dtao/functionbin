@@ -9,3 +9,18 @@
   = link_to('Upvote', upvote_implementation_path(@implementation), :class => 'upvote')
 
 = readonly_code_mirror(:source, @implementation.source)
+
+%h2= pluralize(@implementation.comments_count, 'Comment')
+
+- @implementation.comments.each do |comment|
+  .comment
+    %h3
+      = link_to(comment.user.name, comment.user)
+      %small= "#{time_ago_in_words(comment.created_at)} ago"
+    %p= comment.content
+
+= form_tag(comment_on_implementation_path(@implementation)) do
+  %fieldset
+    %legend Leave a comment
+    .field= text_area_tag(:content)
+    .field= submit_tag

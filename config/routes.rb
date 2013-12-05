@@ -10,6 +10,8 @@ FunctionBin::Application.routes.draw do
   # Named routes
   get 'functions/:id/implement' => 'implementations#new', :as => :implement_function
   get 'implementations/:id/upvote' => 'implementations#upvote', :as => :upvote_implementation
+  post 'functions/:id/comment' => 'functions#comment', :as => :comment_on_function
+  post 'implementations/:id/comment' => 'implementations#comment', :as => :comment_on_implementation
 
   # Resource routes
   resources :users

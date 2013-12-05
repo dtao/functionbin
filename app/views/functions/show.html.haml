@@ -16,6 +16,21 @@
 
     = link_to('Implement', "/functions/#{@function.id}/implement", :class => 'action')
 
+    %h2= pluralize(@function.comments_count, 'Comment')
+
+    - @function.comments.each do |comment|
+      .comment
+        %h3
+          = link_to(comment.user.name, comment.user)
+          %small= "#{time_ago_in_words(comment.created_at)} ago"
+        %p= comment.content
+
+    = form_tag(comment_on_function_path(@function)) do
+      %fieldset
+        %legend Leave a comment
+        .field= text_area_tag(:content)
+        .field= submit_tag('Comment')
+
   .column
     %h2 Implementations
 
@@ -27,8 +42,9 @@
       = readonly_code_mirror(:example, implementation.source)
 
       %p
-        = pluralize(implementation.upvotes.count, 'upvote')
+        = pluralize(implementation.score, 'upvote')
         = link_to('Upvote', "/implementations/#{implementation.id}/upvote", :class => 'upvote')
+        = link_to(pluralize(implementation.comments_count, 'comment'), implementation)
 
 :javascript
   this.charts = {

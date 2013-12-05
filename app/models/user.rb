@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :functions
   has_many :implementations
   has_many :upvotes
+  has_many :comments
 
   validates_presence_of   :name
   validates_presence_of   :email

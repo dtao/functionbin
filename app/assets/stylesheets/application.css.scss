@@ -104,3 +104,7 @@ a.action {
     @extend .col-lg-6;
   }
 }
+
+.comment {
+  @extend .well, .well-sm;
+}
