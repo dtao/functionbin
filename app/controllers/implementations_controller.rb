@@ -23,15 +23,15 @@ FunctionBin::App.controllers :implementations do
 
     if current_user.upvoted?(implementation)
       flash[:notice] = "You already upvoted this implementation."
-      halt redirect("/implementations/#{implementation.id}")
+      halt redirect("/functions/#{implementation.function_id}")
     end
 
     if current_user == implementation.user
       flash[:notice] = "You cannot upvote your own implementation."
-      half redirect("/implementations/#{implementation.id}")
+      half redirect("/functions/#{implementation.function_id}")
     end
 
     current_user.upvotes.create(:implementation => implementation)
-    redirect("/implementations/#{implementation.id}")
+    redirect("/functions/#{implementation.function_id}")
   end
 end
