@@ -54,7 +54,7 @@ window.addEventListener('load', function() {
       },
       title: { text: title },
       xAxis: { categories: ['Upvotes'] },
-      yAxis: { title: false },
+      yAxis: { title: false, min: 0, minRange: 9, minTickInterval: 1 },
       credits: { enabled: false },
       series: data
     });
