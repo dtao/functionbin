@@ -1,4 +1,8 @@
 window.addEventListener('load', function() {
+  Highcharts.setOptions({
+    colors: ['#008cba', '#43ac6a', '#e99002', '#5bc0de', '#f04124']
+  });
+
   function forEach(collection, fn) {
     for (var i = 0; i < collection.length; ++i) {
       fn(collection[i]);
