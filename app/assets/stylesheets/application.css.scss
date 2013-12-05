@@ -45,7 +45,7 @@ input[type="submit"] {
 }
 
 a.upvote {
-  @extend .btn, .btn-sm, .btn-success;
+  @extend .btn, .btn-xs, .btn-success;
 }
 
 a.action {
