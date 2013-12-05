@@ -1,37 +1,26 @@
-FunctionBin::App.controllers :implementations do
-  get :new, :map => '/functions/:id/implement' do |id|
-    @function = FunctionBin::Function.get(id)
-    render(:'implementations/new')
+class ImplementationsController < ApplicationController
+  def new
+    @function = Function.find(params[:id])
   end
 
-  get :index, :with => :id do |id|
-    @implementation = FunctionBin::Implementation.get(id)
-    render(:'implementations/show')
+  def show
+    @implementation = Implementation.find(params[:id])
   end
 
-  post :index do
-    implementation = current_user.implementations.create({
-      :function_id => params['function_id'],
-      :source => params['source']
-    })
-
-    redirect("/implementations/#{implementation.id}")
+  def create
+    implementation = current_user.implementations.create!(implementation_params)
+    redirect_to(implementation.function)
   end
 
-  get :upvote, :map => '/implementations/:id/upvote' do |id|
-    implementation = FunctionBin::Implementation.get(id)
+  def upvote
+    implementation = Implementation.find(params[:id])
+    current_user.upvote!(implementation)
+    redirect_to(implementation.function)
+  end
 
-    if current_user.upvoted?(implementation)
-      flash[:notice] = "You already upvoted this implementation."
-      halt redirect("/functions/#{implementation.function_id}")
-    end
+  private
 
-    if current_user == implementation.user
-      flash[:notice] = "You cannot upvote your own implementation."
-      half redirect("/functions/#{implementation.function_id}")
-    end
-
-    current_user.upvotes.create(:implementation => implementation)
-    redirect("/functions/#{implementation.function_id}")
+  def implementation_params
+    params.require(:implementation).permit(:function_id, :source)
   end
 end

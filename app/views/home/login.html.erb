@@ -1,0 +1,11 @@
+<%= form_tag(login_path) do %>
+  <fieldset>
+    <legend>Log In</legend>
+    <div class="field">
+      <%= text_field_tag(:email, nil, :placeholder => 'Enter your e-mail address') %>
+    </div>
+    <div class="field">
+      <%= submit_tag('Log In') %>
+    </div>
+  </fieldset>
+<% end %>

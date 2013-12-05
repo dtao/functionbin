@@ -16,7 +16,7 @@
       %tbody
         - @user.functions.each do |function|
           %tr
-            %td= link_to(function.name, "/functions/#{function.id}")
+            %td= link_to(function.name, function)
             %td= function.description
             %td= "#{time_ago_in_words(function.created_at)} ago"
 
@@ -33,6 +33,6 @@
       %tbody
         - @user.implementations.each do |implementation|
           %tr
-            %td= link_to(implementation.function.name, "/functions/#{implementation.function_id}")
+            %td= link_to(implementation.function.name, implementation.function)
             %td= implementation.function.description
-            %td= link_to(time_ago_in_words(implementation.created_at) + ' ago', "/implementations/#{implementation.id}")
+            %td= link_to(time_ago_in_words(implementation.created_at) + ' ago', implementation)

@@ -1,15 +1,19 @@
-%h1= "Implement #{@function.name}"
+%h1
+  Implement
+  = link_to(@function.name, @function)
 
 %p= @function.description
 
 .two-column
   .column
     %h2 Example
-    = readonly_code_mirror(:example, :value => @function.example)
+    = readonly_code_mirror(:example, @function.example)
 
   .column
     %h2 Implementation
-    = form_tag('/implementations') do
-      = hidden_field_tag(:function_id, :value => @function.id)
-      .field= code_mirror(:source)
-      .field= submit_tag
+    = form_for(Implementation.new(:function => @function)) do |f|
+      = f.hidden_field(:function_id)
+      .field
+        = code_mirror(:'implementation[source]')
+      .field
+        = f.submit

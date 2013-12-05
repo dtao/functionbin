@@ -1,11 +1,10 @@
-FunctionBin::App.controllers :functions do
-  get :index do
-    @functions = FunctionBin::Function.all(:order => [:name.asc])
-    render(:'functions/index')
+class FunctionsController < ApplicationController
+  def index
+    @functions = Function.order(:name => :asc)
   end
 
-  get :index, :with => :id do |id|
-    @function = FunctionBin::Function.get(id)
+  def show
+    @function = Function.find(params[:id])
 
     @popular_implementations_json = Oj.dump(@function.implementations.map { |impl|
       {
@@ -13,17 +12,16 @@ FunctionBin::App.controllers :functions do
         'data' => [impl.upvotes.count]
       }
     })
-
-    render(:'functions/show')
   end
 
-  post :index do
-    function = current_user.functions.create({
-      :name => params['name'],
-      :description => params['description'],
-      :example => params['example']
-    })
+  def create
+    function = current_user.functions.create!(function_params)
+    redirect_to(function)
+  end
 
-    redirect("/functions/#{function.id}")
+  private
+
+  def function_params
+    params.require(:function).permit(:name, :description, :example)
   end
 end

@@ -1,0 +1,14 @@
+<%= form_tag('/register') do %>
+  <fieldset>
+    <legend>Register</legend>
+    <div class="field">
+      <%= text_field_tag(:name, nil, :placeholder => 'Enter your name') %>
+    </div>
+    <div class="field">
+      <%= text_field_tag(:email, @email, :placeholder => 'Enter your e-mail address') %>
+    </div>
+    <div class="field">
+      <%= submit_tag('Register') %>
+    </div>
+  </fieldset>
+<% end %>

@@ -1,16 +1,9 @@
-module FunctionBin
-  class Implementation
-    include DataMapper::Resource
+class Implementation < ActiveRecord::Base
+  belongs_to :user, :counter_cache => true
+  belongs_to :function, :counter_cache => true
+  has_many :upvotes
 
-    property :id,          Serial
-    property :user_id,     Integer, :required => true, :index => true
-    property :function_id, Integer, :required => true, :index => true
-    property :source,      Text
-    property :created_at,  DateTime
-    property :updated_at,  DateTime
-
-    belongs_to :user
-    belongs_to :function
-    has n, :upvotes
-  end
+  validates_presence_of :user_id
+  validates_presence_of :function_id
+  validates_presence_of :source
 end

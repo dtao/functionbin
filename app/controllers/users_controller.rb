@@ -1,11 +1,9 @@
-FunctionBin::App.controllers :users do
-  get :index do
-    @users = FunctionBin::User.all(:order => [:name.asc])
-    render(:'users/index')
+class UsersController < ApplicationController
+  def index
+    @users = User.order(:score => :desc)
   end
 
-  get :index, :with => :id do |id|
-    @user = FunctionBin::User.get(id)
-    render(:'users/show')
+  def show
+    @user = User.find(params[:id])
   end
 end

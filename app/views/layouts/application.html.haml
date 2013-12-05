@@ -4,12 +4,7 @@
     %title FunctionBin
     = stylesheet_link_tag("lib/codemirror")
     = stylesheet_link_tag("application")
-    = javascript_include_tag("lib/codemirror")
-    = javascript_include_tag("lib/codemirror/javascript")
-    = javascript_include_tag("lib/codemirror/placeholder")
-    = javascript_include_tag("lib/highcharts/standalone-framework")
-    = javascript_include_tag("lib/highcharts")
-    = javascript_include_tag("application")
+    = javascript_include_tag("all")
 
   %body
     %nav
@@ -19,7 +14,10 @@
         %li= if logged_in? then link_to('Log out', '/logout') else link_to('Log in', '/login') end
 
     %main
+      %header
+        %h1 FunctionBin
+
       = yield
 
     - if flash[:notice]
-      #notice= flash[:notice]
+      #notice!= flash[:notice]

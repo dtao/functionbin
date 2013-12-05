@@ -1,19 +1,17 @@
-module FunctionBin
-  class User
-    include DataMapper::Resource
+class User < ActiveRecord::Base
+  has_many :functions
+  has_many :implementations
+  has_many :upvotes
 
-    property :id,          Serial
-    property :name,        String, :required => true
-    property :email,       String, :unique_index => true
-    property :created_at,  DateTime
-    property :updated_at,  DateTime
+  validates_presence_of   :name
+  validates_presence_of   :email
+  validates_uniqueness_of :email
 
-    has n, :functions
-    has n, :implementations
-    has n, :upvotes
+  def upvoted?(implementation)
+    !!Upvote.find_by(:user => self, :implementation => implementation)
+  end
 
-    def upvoted?(implementation)
-      !!self.upvotes.first(:implementation_id => implementation.id)
-    end
+  def upvote!(implementation)
+    self.upvotes.create!(:implementation => implementation)
   end
 end

@@ -1,8 +1,8 @@
 {
   "destination": {
-    "js": "public/javascripts/lib",
-    "css": "public/stylesheets/lib",
-    "scss": "app/stylesheets/lib"
+    "js": "app/assets/javascripts/lib",
+    "css": "app/assets/stylesheets/lib",
+    "scss": "app/assets/stylesheets/lib"
   },
 
   "dependencies": [

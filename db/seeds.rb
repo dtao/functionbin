@@ -1,6 +1,13 @@
-users = YAML.load_file(File.join(File.dirname(__FILE__), 'users.yml'))
+def load_yaml_file(*files)
+  files.each do |file|
+    file = File.join(File.dirname(__FILE__), file)
+    return YAML.load_file(file) if File.exist?(file)
+  end
+end
+
+users = load_yaml_file('users.yml', 'users.example.yml')
 users = users.map do |name, email|
-  FunctionBin::User.create(:name => name, :email => email)
+  User.create!(:name => name, :email => email)
 end
 
 Dir[File.join(File.dirname(__FILE__), 'seeds', '*')].each do |folder|
@@ -8,7 +15,7 @@ Dir[File.join(File.dirname(__FILE__), 'seeds', '*')].each do |folder|
   description, *examples = File.read(File.join(folder, 'spec.js')).lines
 
   user = users.sample
-  function = user.functions.create({
+  function = user.functions.create!({
     :name => name,
     :description => description.sub(/^\/\/\s*/, ''),
     :example => examples.join
@@ -20,7 +27,7 @@ Dir[File.join(File.dirname(__FILE__), 'seeds', '*')].each do |folder|
     author = potential_authors.sample
     code = File.read(file)
 
-    implementation = function.implementations.create({
+    implementation = function.implementations.create!({
       :user => author,
       :source => code
     })
