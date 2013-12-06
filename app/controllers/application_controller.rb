@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  rescue_from ActiveRecord::RecordInvalid, :with => :show_validation_errors
+  rescue_from ActiveRecord::ActiveRecordError, :with => :show_validation_errors
 
   helper_method [:logged_in?, :current_user]
 
@@ -32,7 +32,12 @@ class ApplicationController < ActionController::Base
   end
 
   def show_validation_errors(error)
-    alert(error.record.errors.first[1], :error)
-    redirect_to(request.referrer)
+    if error.respond_to?(:record)
+      alert(error.record.errors.first[1], :error)
+      return redirect_to(request.referrer)
+    end
+
+    alert("An unexpected error occured. Try again, maybe?", :error)
+    redirect_to(root_path)
   end
 end
