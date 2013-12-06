@@ -8,6 +8,8 @@ class Implementation < ActiveRecord::Base
   validates_presence_of :function_id
   validates_presence_of :source, :message => 'An implementation without any code? Nice try.'
 
+  strip_attributes
+
   def has_upvotes?
     self.score > 0
   end

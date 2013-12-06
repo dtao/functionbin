@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   validates_presence_of   :email
   validates_uniqueness_of :email, :message => 'You have already signed up using that e-mail address.'
 
+  strip_attributes
+
   def upvoted?(implementation)
     !!Upvote.find_by(:user => self, :implementation => implementation)
   end

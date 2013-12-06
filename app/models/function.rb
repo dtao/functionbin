@@ -7,4 +7,6 @@ class Function < ActiveRecord::Base
   validates_presence_of   :name,    :message => 'Every function needs to have a name.'
   validates_uniqueness_of :name,    :message => 'A function already exists with that name.'
   validates_presence_of   :example, :message => 'Provide some example code to show how the function works.'
+
+  strip_attributes
 end
