@@ -28,4 +28,4 @@
           %span.score= user.score
         %td= user.functions_count
         %td= user.implementations_count
-        %td= "#{time_ago_in_words(user.created_at)} ago"
+        %td= timestamp(user)

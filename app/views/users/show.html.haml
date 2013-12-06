@@ -3,7 +3,7 @@
     = gravatar_image_tag(@user.email, :gravatar => { :size => 100 })
     = @user.name
     %span.score= @user.score
-    %small= "Joined #{time_ago_in_words(@user.created_at)} ago"
+    %small= "Joined #{timestamp(@user)}"
 
 .two-column
   .column
@@ -22,7 +22,7 @@
           %tr
             %td= link_to_record(function)
             %td= function.description
-            %td= "#{time_ago_in_words(function.created_at)} ago"
+            %td= timestamp(function)
             %td= function.implementations_count
 
   .column
@@ -41,6 +41,6 @@
           %tr
             %td= link_to_record(implementation.function)
             %td= implementation.function.description
-            %td= link_to(time_ago_in_words(implementation.created_at) + ' ago', implementation)
+            %td= link_to(timestamp(implementation), implementation)
             %td
               %span.score= implementation.score

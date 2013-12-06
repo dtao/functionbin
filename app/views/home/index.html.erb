@@ -23,7 +23,7 @@
         <td>
           by
           <%= link_to(function.user.name, function.user) %>
-          <%= "#{time_ago_in_words(function.created_at)} ago" %>
+          <%= timestamp(function) %>
         </td>
       </tr>
     <% end %>

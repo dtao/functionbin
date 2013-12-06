@@ -22,4 +22,8 @@ module ApplicationHelper
   def options_with_class(options, class_name)
     options.merge(:class => [*options[:class], class_name].join(' '))
   end
+
+  def timestamp(record)
+    time_ago_in_words(record.created_at) + ' ago'
+  end
 end

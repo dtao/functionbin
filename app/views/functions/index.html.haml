@@ -25,7 +25,7 @@
         %td= link_to_record(function)
         %td= function.description
         %td= link_to_record(function.user)
-        %td= "#{time_ago_in_words(function.created_at)} ago"
+        %td= timestamp(function)
         %td= function.implementations_count
         %td= function.comments_count
 

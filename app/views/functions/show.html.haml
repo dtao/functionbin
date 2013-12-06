@@ -24,7 +24,7 @@
       .comment
         %h3
           = link_to_record(comment.user)
-          %small= "#{time_ago_in_words(comment.created_at)} ago"
+          %small= timestamp(comment)
         %p= comment.content
 
     = form_tag(comment_on_function_path(@function)) do
@@ -41,7 +41,7 @@
         %h3
           = gravatar_image_tag(implementation.user.email, :gravatar => { :size => 50 })
           = link_to_record(implementation.user)
-          %small= "#{time_ago_in_words(implementation.created_at)} ago"
+          %small= timestamp(implementation)
 
         = readonly_code_mirror(:example, implementation.source)
 
