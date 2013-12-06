@@ -9,6 +9,7 @@
       %th User
       %th Created
       %th Implementations
+      %th Comments
 
   %tbody
     - @functions.each do |function|
@@ -17,4 +18,5 @@
         %td= function.description
         %td= link_to(function.user.name, "/users/#{function.user_id}")
         %td= "#{time_ago_in_words(function.created_at)} ago"
-        %td= function.implementations.count
+        %td= function.implementations_count
+        %td= function.comments_count
