@@ -1,5 +1,5 @@
 class FunctionsController < ApplicationController
-  require_login_for :create, :comment
+  require_login_for :new, :create, :comment
 
   def index
     @functions = Function.order(:id => :desc)
