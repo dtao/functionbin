@@ -24,4 +24,4 @@
       = yield
 
     - if flash[:notice]
-      #notice!= flash[:notice]
+      #notice(class="#{flash[:style] || 'info'}")= flash[:notice]

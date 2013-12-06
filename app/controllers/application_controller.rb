@@ -11,6 +11,11 @@ class ApplicationController < ActionController::Base
     self.before_filter :require_login, :only => actions
   end
 
+  def alert(message, style=:info)
+    flash[:notice] = message
+    flash[:style]  = style
+  end
+
   def logged_in?
     !!current_user
   end
@@ -21,13 +26,13 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless logged_in?
-      flash[:notice] = 'You must be logged in to do that.'
+      alert('You must be logged in to do that.', :warning)
       redirect_to(request.referrer)
     end
   end
 
   def show_validation_errors(error)
-    flash[:notice] = error.record.errors.first[1]
+    alert(error.record.errors.first[1], :error)
     redirect_to(request.referrer)
   end
 end

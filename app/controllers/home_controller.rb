@@ -7,12 +7,12 @@ class HomeController < ApplicationController
       user = User.find_by(:email => params[:email])
 
       if user.nil?
-        flash[:notice] = "Let's get you registered."
+        alert("Let's get you registered.", :warning)
         return redirect_to(register_path(:email => params[:email]))
       end
 
       session[:user_id] = user.id
-      flash[:notice] = "Welcome back, #{user.name}."
+      alert("Welcome back, #{user.name}.", :success)
       return redirect_to(root_path)
     end
   end
@@ -23,7 +23,7 @@ class HomeController < ApplicationController
     if request.post?
       user = User.create!(:name => params[:name], :email => params[:email])
       session[:user_id] = user.id
-      flash[:notice] = "Thanks for registering, #{user.name}."
+      alert("Thanks for registering, #{user.name}.", :success)
       redirect_to(root_path)
     end
   end

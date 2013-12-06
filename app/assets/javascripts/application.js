@@ -59,4 +59,58 @@ window.addEventListener('load', function() {
       series: data
     });
   });
+
+  // I hate writing setTimeout(fn, delay)!
+  function afterDelay(delay, fn) {
+    return setTimeout(fn, delay);
+  }
+
+  function addClass(element, className) {
+    if (element.classList) {
+      element.classList.add(className);
+      return;
+    }
+
+    var classes = element.className.split(/\s+/);
+    classes.push(className);
+    element.className = classes.join(' ');
+  }
+
+  function onNextTransition(element, callback) {
+    element.addEventListener(transitionEventForBrowser(), function() {
+      callback(element);
+    });
+  }
+
+  // See http://stackoverflow.com/questions/5023514
+  function transitionEventForBrowser() {
+    var div = document.createElement('DIV');
+
+    var transitions = {
+      'transition': 'transitionend',
+      'OTransition': 'oTransitionEnd',
+      'MozTransition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd'
+    };
+
+    for (var t in transitions) {
+      if (div.style[t] !== undefined) {
+        return transitions[t];
+      }
+    }
+
+    // Return and pray
+    return 'transitionend';
+  }
+
+  function removeElement(element) {
+    element.parentNode.removeChild(element);
+  }
+
+  // Slide away alerts after 3 seconds
+  afterDelay(3000, function() {
+    var notice = document.getElementById('notice');
+    addClass(notice, 'exiting');
+    onNextTransition(notice, removeElement);
+  });
 });
