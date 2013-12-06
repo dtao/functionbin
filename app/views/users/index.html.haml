@@ -1,6 +1,14 @@
 - content_for(:header) do
   %h1 Users
 
+.user-search
+  = label_tag(:search, "Search for a user")
+  = text_field_tag(:search, nil, { |
+      :placeholder => "Start typing a user name", |
+      :'data-filters' => 'table > tbody > tr', |
+      :'data-filters-by' => 'td:first-child' |
+    }) |
+
 %table
   %thead
     %tr

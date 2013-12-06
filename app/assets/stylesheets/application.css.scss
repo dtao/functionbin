@@ -184,6 +184,11 @@ a.disabled-link {
   height: 200px;
 }
 
+.function-search,
+.user-search {
+  @extend .well;
+}
+
 .implementation {
   img {
     vertical-align: bottom;

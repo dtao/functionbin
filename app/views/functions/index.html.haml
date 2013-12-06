@@ -1,6 +1,14 @@
 - content_for(:header) do
   %h1 Functions
 
+.function-search
+  = label_tag(:search, "Search for a function")
+  = text_field_tag(:search, nil, { |
+      :placeholder => "Start typing a function name", |
+      :'data-filters' => 'table > tbody > tr', |
+      :'data-filters-by' => 'td:first-child' |
+    }) |
+
 %table
   %thead
     %tr

@@ -63,6 +63,34 @@ window.addEventListener('load', function() {
     });
   });
 
+  forEach(document.querySelectorAll('input[data-filters]'), function(input) {
+    var filter   = input.getAttribute('data-filters'),
+        targets  = document.querySelectorAll(filter),
+        selector = input.getAttribute('data-filters-by');
+
+    if (targets.length === 0) { return; }
+
+    var timeout;
+    input.addEventListener('keyup', function() {
+      var query = new RegExp('^\\s*' + escapeRegExp(input.value), 'i');
+
+      if (timeout) { clearTimeout(timeout); }
+
+      timeout = afterDelay(300, function filterTable() {
+        forEach(targets, function(item) {
+          var element = item.querySelector(selector);
+          if (!element) { return; }
+
+          if (query.test(element.textContent)) {
+            removeClass(item, 'hidden');
+          } else {
+            addClass(item, 'hidden');
+          }
+        });
+      });
+    });
+  });
+
   // I hate writing setTimeout(fn, delay)!
   function afterDelay(delay, fn) {
     return setTimeout(fn, delay);
@@ -76,6 +104,17 @@ window.addEventListener('load', function() {
 
     var classes = element.className.split(/\s+/);
     classes.push(className);
+    element.className = classes.join(' ');
+  }
+
+  function removeClass(element, className) {
+    if (element.classList) {
+      element.classList.remove(className);
+      return;
+    }
+
+    var classes = element.className.split(/\s+/);
+    removeFromArray(classes, className);
     element.className = classes.join(' ');
   }
 
@@ -108,6 +147,19 @@ window.addEventListener('load', function() {
 
   function removeElement(element) {
     element.parentNode.removeChild(element);
+  }
+
+  function removeFromArray(array, value) {
+    for (var i = array.length - 1; i >= 0; --i) {
+      if (array[i] === value) {
+        array.splice(i, 1);
+      }
+    }
+  }
+
+  // Stolen from http://stackoverflow.com/questions/3446170
+  function escapeRegExp(str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
   }
 
   // Slide away any alert(s) after 3 seconds
