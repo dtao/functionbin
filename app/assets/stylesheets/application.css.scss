@@ -7,6 +7,12 @@
   -webkit-transition: $property $duration;
 }
 
+@mixin calc($property, $value) {
+  #{$property}: calc(#{$value});
+  #{$property}: -moz-calc(#{$value});
+  #{$property}: -webkit-calc(#{$value});
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -43,6 +49,13 @@ main {
   border-left: 12px solid black;
   margin-left: 240px;
   min-height: 100%;
+
+  @media all and (min-width: 1170px + (252px * 2)) {
+    width: auto;
+    margin-right: 252px;
+  }
+
+  @include calc(max-width, "100% - 252px");
 }
 
 header {
