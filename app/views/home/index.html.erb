@@ -29,3 +29,7 @@
     <% end %>
   </tbody>
 </table>
+
+<% if logged_in? %>
+  <%= action_link('Propose a new function', new_function_path) %>
+<% end %>
