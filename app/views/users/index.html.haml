@@ -5,7 +5,9 @@
   %thead
     %tr
       %th Name
+      %th Score
       %th Functions
+      %th Implementations
       %th Joined
 
   %tbody
@@ -14,5 +16,7 @@
         %td
           = gravatar_image_tag(user.email, :gravatar => { :size => 50 })
           = link_to(user.name, "/users/#{user.id}")
-        %td= user.functions.count
+        %td= user.score
+        %td= user.functions_count
+        %td= user.implementations_count
         %td= "#{time_ago_in_words(user.created_at)} ago"

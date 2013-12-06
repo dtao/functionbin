@@ -14,6 +14,7 @@
           %th Name
           %th Description
           %th Created
+          %th Implementations
 
       %tbody
         - @user.functions.each do |function|
@@ -21,6 +22,7 @@
             %td= link_to(function.name, function)
             %td= function.description
             %td= "#{time_ago_in_words(function.created_at)} ago"
+            %td= function.implementations_count
 
   .column
     %h2 Implementations
@@ -31,6 +33,7 @@
           %th Function
           %th Description
           %th Implemented
+          %th Comments
 
       %tbody
         - @user.implementations.each do |implementation|
@@ -38,3 +41,4 @@
             %td= link_to(implementation.function.name, implementation.function)
             %td= implementation.function.description
             %td= link_to(time_ago_in_words(implementation.created_at) + ' ago', implementation)
+            %td= implementation.comments_count
