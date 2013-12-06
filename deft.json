@@ -6,8 +6,9 @@
   },
 
   "dependencies": [
-    ["http://bootswatch.com/yeti/", {
-      "bootstrap.css": "bootstrap.scss"
+    ["http://bootswatch.com/", {
+      "readable/bootstrap.css": "readable.scss",
+      "yeti/bootstrap.css": "yeti.scss"
     }],
 
     ["marijnh/codemirror", "v3.12", {

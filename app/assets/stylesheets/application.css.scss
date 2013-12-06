@@ -1,4 +1,4 @@
-@import "lib/bootstrap";
+@import "lib/readable";
 
 html, body {
   margin: 0;
@@ -14,6 +14,10 @@ nav {
 
   ul {
     @extend .nav, .nav-stacked;
+
+    li {
+      @extend h4;
+    }
   }
 }
 
@@ -49,7 +53,7 @@ input[type="text"], textarea {
 }
 
 input[type="submit"] {
-  @extend .btn, .btn-lg, .btn-primary;
+  @extend .btn, .btn-sm, .btn-primary;
 }
 
 a.upvote {
