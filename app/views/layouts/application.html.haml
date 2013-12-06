@@ -9,8 +9,9 @@
   %body(data-page="#{params[:controller]}-#{params[:action]}")
     %nav
       %ul
-        %li= link_to('Home', '/')
-        %li= link_to('Functions', '/functions')
+        %li= link_to('Home', root_path)
+        %li= link_to('Users', users_path)
+        %li= link_to('Functions', functions_path)
         %li= if logged_in? then link_to('Log out', '/logout') else link_to('Log in', '/login') end
 
     %main
