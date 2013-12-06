@@ -21,14 +21,16 @@ window.addEventListener('load', function() {
       lineNumbers: true
     };
 
-    var reaodnly = textarea.getAttribute('data-readonly')
-    if (reaodnly) {
-      options.readOnly = reaodnly;
+    var readonly = textarea.getAttribute('data-readonly')
+    if (readonly) {
+      options.readOnly = readonly;
+    } else {
+      options.viewportMargin = Infinity;
     }
 
     var editor = CodeMirror.fromTextArea(textarea, options);
 
-    if (reaodnly) {
+    if (readonly) {
       editor.getWrapperElement().className += ' readonly';
       editor.getWrapperElement().querySelector('.CodeMirror-scroll').className += ' readonly';
     }

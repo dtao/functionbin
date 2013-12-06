@@ -150,7 +150,7 @@ a.disabled-link {
 
 .CodeMirror-scroll {
   overflow-x: auto;
-  overflow-y: hide;
+  overflow-y: hidden;
 }
 
 .CodeMirror:not(.readonly), .CodeMirror-scroll:not(.readonly) {
