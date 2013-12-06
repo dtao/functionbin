@@ -1,0 +1,8 @@
+<div class="table-filter">
+  <%= label_tag(:search, "Search for a #{type}") %>
+  <%= text_field_tag(:search, nil, {
+      :placeholder => "Start typing a #{type} #{property}",
+      :'data-filters' => 'table > tbody > tr',
+      :'data-filters-by' => cell_selector
+  }) %>
+</div>

@@ -7,6 +7,14 @@ module ApplicationHelper
     code_mirror(field_name, value, options.merge(:'data-readonly' => 'nocursor'))
   end
 
+  def table_filter(type, property, cell_selector='td:first-child')
+    render(:partial => 'partials/table_filter', :locals => {
+      :type => type,
+      :property => property,
+      :cell_selector => cell_selector
+    })
+  end
+
   def profile_image(user, size=50)
     gravatar_image_tag(user.email, :gravatar => { :size => size })
   end

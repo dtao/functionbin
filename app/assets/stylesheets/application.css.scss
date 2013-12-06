@@ -172,6 +172,10 @@ a.disabled-link {
   }
 }
 
+.table-filter {
+  @extend .well;
+}
+
 .login-prompt {
   @extend .well, .well-lg;
 
@@ -182,11 +186,6 @@ a.disabled-link {
 
 .popular-implementations {
   height: 200px;
-}
-
-.function-search,
-.user-search {
-  @extend .well;
 }
 
 .implementation {
