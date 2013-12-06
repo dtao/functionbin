@@ -13,6 +13,7 @@ FunctionBin::Application.routes.draw do
   post 'functions/:id/comment' => 'functions#comment', :as => :comment_on_function
   post 'implementations/:id/comment' => 'implementations#comment', :as => :comment_on_implementation
   get '/auth/:provider/callback' => 'auth#authenticate', :as => :authenticate
+  get '/api/node' => 'api#node'
 
   # Resource routes
   resources :users

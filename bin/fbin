@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+var http      = require('http'),
+    fs        = require('fs'),
+    path      = require('path'),
+    pkgInfo   = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.json'))),
+    commander = require('commander');
+
+commander
+  .version(pkgInfo.version)
+  .option('-h, --host <host>', 'The host to download from (defaults to functionbin.herokuapp.com)')
+  .option('-o, --output <path>', 'Where to save the downloaded functions')
+  .parse(process.argv);
+
+var baseUrl = 'http://' + (commander.host || 'functionbin.herokuapp.com') + '/api/',
+    outputPath = path.join(process.cwd(), commander.output || 'dependencies.js'),
+    functionIds = process.argv.pop();
+
+http.get(baseUrl + 'node.js?ids=' + functionIds, function(response) {
+  console.log('Received response - writing to ' + outputPath + '...');
+  var stream = fs.createWriteStream(outputPath);
+  response.pipe(stream);
+
+  stream.on('finish', function() {
+    stream.close();
+    console.log('Done.');
+  });
+});

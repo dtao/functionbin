@@ -1,0 +1,11 @@
+{
+  "name": "functionbin",
+  "description": "Functions over libraries",
+  "version": "0.1.0",
+  "bin": {
+    "fbin": "bin/fbin"
+  },
+  "dependencies": {
+    "commander": ">= 2.1.0"
+  }
+}
