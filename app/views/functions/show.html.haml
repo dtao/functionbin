@@ -35,7 +35,7 @@
   .column
     %h2 Implementations
 
-    - @function.implementations.each do |implementation|
+    - @implementations.each do |implementation|
       .implementation
         %h3
           = gravatar_image_tag(implementation.user.email, :gravatar => { :size => 50 })
