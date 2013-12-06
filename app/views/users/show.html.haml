@@ -2,6 +2,7 @@
   %h1
     = gravatar_image_tag(@user.email, :gravatar => { :size => 100 })
     = @user.name
+    %span.score= @user.score
     %small= "Joined #{time_ago_in_words(@user.created_at)} ago"
 
 .two-column
@@ -33,7 +34,7 @@
           %th Function
           %th Description
           %th Implemented
-          %th Comments
+          %th Score
 
       %tbody
         - @user.implementations.each do |implementation|
@@ -41,4 +42,5 @@
             %td= link_to(implementation.function.name, implementation.function)
             %td= implementation.function.description
             %td= link_to(time_ago_in_words(implementation.created_at) + ' ago', implementation)
-            %td= implementation.comments_count
+            %td
+              %span.score= implementation.score

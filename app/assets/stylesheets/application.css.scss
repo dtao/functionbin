@@ -177,6 +177,10 @@ a.disabled-link {
   }
 }
 
+.score {
+  @extend .label, .label-info;
+}
+
 [data-page="users-index"] td {
   vertical-align: middle;
 }
