@@ -46,6 +46,9 @@ window.addEventListener('load', function() {
         type: 'bar',
         renderTo: target,
       },
+      plotOptions: {
+        series: { animation: false }
+      },
       legend: {
         layout: 'vertical',
         align: 'right',
