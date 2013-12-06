@@ -32,6 +32,6 @@ class HomeController < ApplicationController
   def logout
     session.delete(:user_id)
     alert('Logged out', :info)
-    return redirect_to(request.referrer)
+    return redirect_to(root_path)
   end
 end
