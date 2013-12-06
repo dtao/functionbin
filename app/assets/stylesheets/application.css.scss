@@ -1,3 +1,4 @@
+@import "lib/codemirror";
 @import "lib/readable";
 
 @mixin transition($property, $duration: 1s) {
