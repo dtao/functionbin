@@ -1,8 +1,9 @@
-%h1
-  Implement
-  = link_to(@function.name, @function)
+- content_for(:header) do
+  %h1
+    Implement
+    = link_to(@function.name, @function)
 
-%p= @function.description
+  %p= @function.description
 
 .two-column
   .column

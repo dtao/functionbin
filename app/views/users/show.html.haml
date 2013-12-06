@@ -1,7 +1,8 @@
-%h1
-  = gravatar_image_tag(@user.email, :gravatar => { :size => 100 })
-  = @user.name
-  %small= "Joined #{time_ago_in_words(@user.created_at)} ago"
+- content_for(:header) do
+  %h1
+    = gravatar_image_tag(@user.email, :gravatar => { :size => 100 })
+    = @user.name
+    %small= "Joined #{time_ago_in_words(@user.created_at)} ago"
 
 .two-column
   .column

@@ -15,7 +15,10 @@
 
     %main
       %header
-        %h1 FunctionBin
+        - if content_for?(:header)
+          = yield(:header)
+        - else
+          %h1 FunctionBin
 
       = yield
 

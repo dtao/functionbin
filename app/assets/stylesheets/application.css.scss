@@ -27,6 +27,10 @@ main {
 header {
   @extend .page-header;
 
+  p {
+    @extend .lead;
+  }
+
   img {
     vertical-align: bottom;
   }

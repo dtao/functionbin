@@ -1,12 +1,13 @@
-%h1
-  = link_to(@implementation.function.name, @implementation.function)
-  %small
-    Implemented by
-    = link_to(@implementation.user.name, @implementation.user)
+- content_for(:header) do
+  %h1
+    = link_to(@implementation.function.name, @implementation.function)
+    %small
+      Implemented by
+      = link_to(@implementation.user.name, @implementation.user)
 
-%p
-  = pluralize(@implementation.upvotes.count, 'upvote')
-  = link_to('Upvote', upvote_implementation_path(@implementation), :class => 'upvote')
+  %p
+    = pluralize(@implementation.upvotes.count, 'upvote')
+    = link_to('Upvote', upvote_implementation_path(@implementation), :class => 'upvote')
 
 = readonly_code_mirror(:source, @implementation.source)
 

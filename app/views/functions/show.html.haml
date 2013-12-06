@@ -1,10 +1,11 @@
-%h1
-  = @function.name
-  %small
-    Proposed by
-    = link_to(@function.user.name, "/users/#{@function.user_id}")
+- content_for(:header) do
+  %h1
+    = @function.name
+    %small
+      Proposed by
+      = link_to(@function.user.name, "/users/#{@function.user_id}")
 
-%p= @function.description
+  %p= @function.description
 
 .popular-implementations
 
