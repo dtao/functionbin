@@ -7,15 +7,15 @@ class FunctionsController < ApplicationController
 
   def show
     @function = Function.find(params[:id])
-
-    @implementations = @function.implementations.order(:score => :desc)
-
-    @popular_implementations_json = Oj.dump(@function.implementations.map { |impl|
+    @implementations = @function.implementations.order(:score => :desc).to_a
+    @popular_implementations = @implementations.select(&:has_upvotes?).map do |impl|
       {
         'name' => impl.user.name,
         'data' => [impl.upvotes.count]
       }
-    })
+    end
+
+    @popular_implementations_json = Oj.dump(@popular_implementations)
   end
 
   def create

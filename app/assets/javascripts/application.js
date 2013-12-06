@@ -35,8 +35,11 @@ window.addEventListener('load', function() {
   });
 
   forEachIn(this.charts || {}, function(title, config) {
-    var target = document.querySelector(config.target),
-        data   = config.data;
+    var target = document.querySelector(config.target);
+
+    if (!target) {
+      return;
+    }
 
     new Highcharts.Chart({
       chart: {
@@ -56,7 +59,7 @@ window.addEventListener('load', function() {
       xAxis: { categories: ['Upvotes'] },
       yAxis: { title: false, min: 0, minRange: 9, minTickInterval: 1 },
       credits: { enabled: false },
-      series: data
+      series: config.data
     });
   });
 
