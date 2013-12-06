@@ -2,12 +2,13 @@ class FunctionsController < ApplicationController
   require_login_for :new, :create, :comment
 
   def index
-    @functions = Function.order(:id => :desc)
+    @functions = Function.order(:id => :desc).all(:include => :user)
   end
 
   def show
     @function = Function.find(params[:id])
-    @implementations = @function.implementations.order(:score => :desc).to_a
+    @comments = @function.comments.order(:id => :asc).all(:include => :user)
+    @implementations = @function.implementations.order(:score => :desc).all(:include => :user)
     @popular_implementations = @implementations.select(&:has_upvotes?).map do |impl|
       {
         'name' => impl.user.name,

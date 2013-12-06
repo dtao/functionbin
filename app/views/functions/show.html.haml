@@ -20,7 +20,7 @@
 
     %h2= pluralize(@function.comments_count, 'Comment')
 
-    - @function.comments.each do |comment|
+    - @comments.each do |comment|
       .comment
         %h3
           = link_to_record(comment.user)

@@ -26,4 +26,18 @@ FunctionBin::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Bullet config, taken directly from project README:
+  # https://github.com/flyerhzm/bullet
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.add_footer = true
+  end
+
+  # Don't cache a damn thing
+  config.cache_store = :null_store
+
+  # Stupid Foreman!
+  STDOUT.sync = true
 end

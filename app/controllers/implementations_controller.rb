@@ -7,6 +7,7 @@ class ImplementationsController < ApplicationController
 
   def show
     @implementation = Implementation.find(params[:id])
+    @comments = @implementation.comments.order(:id => :asc).all(:include => :user)
   end
 
   def create

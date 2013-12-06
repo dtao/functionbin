@@ -28,6 +28,9 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     builder (3.1.4)
+    bullet (4.7.1)
+      activesupport
+      uniform_notifier (>= 1.4.0)
     erubis (2.7.0)
     execjs (2.0.2)
     gravatar_image_tag (1.2.0)
@@ -99,11 +102,13 @@ GEM
     uglifier (2.3.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uniform_notifier (1.4.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bullet
   gravatar_image_tag
   haml-rails
   oj

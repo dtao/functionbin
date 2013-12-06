@@ -17,7 +17,7 @@
 
 %h2= pluralize(@implementation.comments_count, 'Comment')
 
-- @implementation.comments.each do |comment|
+- @comments.each do |comment|
   .comment
     %h3
       = profile_image(comment.user)

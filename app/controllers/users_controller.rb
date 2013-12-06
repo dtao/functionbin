@@ -5,5 +5,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @implementations = @user.implementations.all(:include => :function)
   end
 end

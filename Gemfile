@@ -29,6 +29,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  # Kill them N+1 queries
+  gem 'bullet'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
