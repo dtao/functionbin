@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def site_header
-    render(:partial => 'partials/site_footer')
-  end
-
   def site_footer
     render(:partial => 'partials/site_footer')
   end
