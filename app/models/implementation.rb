@@ -6,7 +6,7 @@ class Implementation < ActiveRecord::Base
 
   validates_presence_of :user_id
   validates_presence_of :function_id
-  validates_presence_of :source
+  validates_presence_of :source, :message => 'An implementation without any code? Nice try.'
 
   def has_upvotes?
     self.score > 0

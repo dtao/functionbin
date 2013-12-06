@@ -4,5 +4,5 @@ class Comment < ActiveRecord::Base
 
   validates_presence_of :parent_type
   validates_presence_of :parent_id
-  validates_presence_of :content
+  validates_presence_of :content, :message => "What's the point of a blank comment?"
 end
