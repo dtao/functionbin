@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @functions = Function.order(:id => :desc).limit(10)
   end
 
   def login
