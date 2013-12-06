@@ -18,5 +18,7 @@
   <% end %>
 
 <% else %>
-  <p><%= link_to('Log in', login_path) %> to continue.</p>
+  <div class="login-prompt">
+    <p><%= link_to('Log in', login_path) %> to continue.</p>
+  </div>
 <% end %>

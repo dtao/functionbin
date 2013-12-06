@@ -40,6 +40,11 @@ main {
 header {
   @extend .page-header;
 
+  h1 em {
+    @extend .text-muted;
+    font-style: normal;
+  }
+
   p {
     @extend .lead;
   }
@@ -78,7 +83,7 @@ a.disabled-link {
 }
 
 #notice {
-  @extend .alert;
+  @extend .alert, h5;
 
   position: fixed;
   bottom: 0;
@@ -139,6 +144,14 @@ a.disabled-link {
 
   & > * {
     @extend .col-lg-6;
+  }
+}
+
+.login-prompt {
+  @extend .well, .well-lg;
+
+  p {
+    margin: 0;
   }
 }
 
