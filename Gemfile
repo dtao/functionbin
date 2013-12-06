@@ -18,6 +18,9 @@ gem 'uglifier', '>= 1.3.0'
 # Fast JSON serialization
 gem 'oj'
 
+# User profile images
+gem 'gravatar_image_tag'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

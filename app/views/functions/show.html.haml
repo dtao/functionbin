@@ -35,11 +35,13 @@
     %h2 Implementations
 
     - @function.implementations.each do |implementation|
-      %h3
-        = link_to(implementation.user.name, "/users/#{implementation.user_id}")
-        %small= "#{time_ago_in_words(implementation.created_at)} ago"
+      .implementation
+        %h3
+          = gravatar_image_tag(implementation.user.email, :gravatar => { :size => 50 })
+          = link_to(implementation.user.name, "/users/#{implementation.user_id}")
+          %small= "#{time_ago_in_words(implementation.created_at)} ago"
 
-      = readonly_code_mirror(:example, implementation.source)
+        = readonly_code_mirror(:example, implementation.source)
 
       %p
         = pluralize(implementation.score, 'upvote')

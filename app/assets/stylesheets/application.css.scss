@@ -26,6 +26,10 @@ main {
 
 header {
   @extend .page-header;
+
+  img {
+    vertical-align: bottom;
+  }
 }
 
 table {
@@ -68,10 +72,6 @@ a.action {
   z-index: 10;
 }
 
-.popular-implementations {
-  height: 200px;
-}
-
 .CodeMirror {
   @extend .form-control;
 
@@ -105,6 +105,24 @@ a.action {
   }
 }
 
+.popular-implementations {
+  height: 200px;
+}
+
+.implementation {
+  img {
+    vertical-align: bottom;
+  }
+}
+
 .comment {
   @extend .well, .well-sm;
+
+  img {
+    vertical-align: bottom;
+  }
+}
+
+[data-page="users-index"] td {
+  vertical-align: middle;
 }
