@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def site_header
+    render(:partial => 'partials/site_footer')
+  end
+
+  def site_footer
+    render(:partial => 'partials/site_footer')
+  end
+
   def code_mirror(field_name, value=nil, options={})
     text_area_tag(field_name, value, options.merge(:class => 'code-mirror-placeholder'))
   end

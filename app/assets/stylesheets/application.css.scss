@@ -57,22 +57,39 @@ main {
   }
 
   @include calc(max-width, "100% - 252px");
-}
 
-header {
-  @extend .page-header;
+  & > header {
+    @extend .page-header;
 
-  h1 em {
-    @extend .text-muted;
-    font-style: normal;
+    h1 em {
+      @extend .text-muted;
+      font-style: normal;
+    }
+
+    p {
+      @extend .lead;
+    }
+
+    img {
+      vertical-align: bottom;
+    }
   }
 
-  p {
-    @extend .lead;
-  }
+  & > footer {
+    @extend .small, .text-muted;
 
-  img {
-    vertical-align: bottom;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 200px;
+
+    p {
+      margin-bottom: 1ex;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
