@@ -22,9 +22,9 @@
   %tbody
     - @functions.each do |function|
       %tr
-        %td= link_to(function.name, "/functions/#{function.id}")
+        %td= link_to_record(function)
         %td= function.description
-        %td= link_to(function.user.name, "/users/#{function.user_id}")
+        %td= link_to_record(function.user)
         %td= "#{time_ago_in_words(function.created_at)} ago"
         %td= function.implementations_count
         %td= function.comments_count

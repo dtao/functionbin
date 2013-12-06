@@ -1,9 +1,9 @@
 - content_for(:header) do
   %h1
-    = link_to(@implementation.function.name, @implementation.function)
+    = link_to_record(@implementation.function)
     %small
       Implemented by
-      = link_to(@implementation.user.name, @implementation.user)
+      = link_to_record(@implementation.user)
 
   %p
     = pluralize(@implementation.upvotes.count, 'upvote')
@@ -21,7 +21,7 @@
   .comment
     %h3
       = gravatar_image_tag(comment.user.email, :gravatar => { :size => 50 })
-      = link_to(comment.user.name, comment.user)
+      = link_to_record(comment.user)
       %small= "#{time_ago_in_words(comment.created_at)} ago"
     %p= comment.content
 

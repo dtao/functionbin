@@ -20,7 +20,7 @@
       %tbody
         - @user.functions.each do |function|
           %tr
-            %td= link_to(function.name, function)
+            %td= link_to_record(function)
             %td= function.description
             %td= "#{time_ago_in_words(function.created_at)} ago"
             %td= function.implementations_count
@@ -39,7 +39,7 @@
       %tbody
         - @user.implementations.each do |implementation|
           %tr
-            %td= link_to(implementation.function.name, implementation.function)
+            %td= link_to_record(implementation.function)
             %td= implementation.function.description
             %td= link_to(time_ago_in_words(implementation.created_at) + ' ago', implementation)
             %td

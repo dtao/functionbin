@@ -23,7 +23,7 @@
       %tr
         %td
           = gravatar_image_tag(user.email, :gravatar => { :size => 50 })
-          = link_to(user.name, "/users/#{user.id}")
+          = link_to_record(user)
         %td
           %span.score= user.score
         %td= user.functions_count

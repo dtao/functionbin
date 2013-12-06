@@ -3,7 +3,7 @@
     = @function.name
     %small
       Proposed by
-      = link_to(@function.user.name, "/users/#{@function.user_id}")
+      = link_to_record(@function.user)
 
   %p= @function.description
 
@@ -16,14 +16,14 @@
 
     = readonly_code_mirror(:example, @function.example)
 
-    = link_to('Implement', "/functions/#{@function.id}/implement", :class => 'action')
+    = action_link('Implement', implement_function_path(@function))
 
     %h2= pluralize(@function.comments_count, 'Comment')
 
     - @function.comments.each do |comment|
       .comment
         %h3
-          = link_to(comment.user.name, comment.user)
+          = link_to_record(comment.user)
           %small= "#{time_ago_in_words(comment.created_at)} ago"
         %p= comment.content
 
@@ -40,7 +40,7 @@
       .implementation
         %h3
           = gravatar_image_tag(implementation.user.email, :gravatar => { :size => 50 })
-          = link_to(implementation.user.name, "/users/#{implementation.user_id}")
+          = link_to_record(implementation.user)
           %small= "#{time_ago_in_words(implementation.created_at)} ago"
 
         = readonly_code_mirror(:example, implementation.source)
