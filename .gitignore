@@ -10,10 +10,6 @@
 # Ignore sensitive environment variables
 /.env
 
-# Ignore deft dependencies
-**/javascripts/lib/*
-**/stylesheets/lib/*
-
 # Don't include users.yml, only users.example.yml
 users.yml
 
