@@ -56,6 +56,10 @@ header {
 
 table {
   @extend .table;
+
+  th:last-child, td:last-child {
+    text-align: right;
+  }
 }
 
 form .field {
