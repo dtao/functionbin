@@ -2,7 +2,7 @@ class FunctionsController < ApplicationController
   require_login_for :create, :comment
 
   def index
-    @functions = Function.order(:name => :asc)
+    @functions = Function.order(:id => :desc)
   end
 
   def show
