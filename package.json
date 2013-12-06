@@ -2,6 +2,7 @@
   "name": "functionbin",
   "description": "Functions over libraries",
   "version": "0.1.0",
+  "repository": "https://github.com/dtao/functionbin",
   "bin": {
     "fbin": "bin/fbin"
   },
