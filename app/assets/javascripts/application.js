@@ -110,9 +110,11 @@ window.addEventListener('load', function() {
     element.parentNode.removeChild(element);
   }
 
-  // Slide away alerts after 3 seconds
+  // Slide away any alert(s) after 3 seconds
   afterDelay(3000, function() {
     var notice = document.getElementById('notice');
+    if (!notice) { return; }
+
     addClass(notice, 'exiting');
     onNextTransition(notice, removeElement);
   });
