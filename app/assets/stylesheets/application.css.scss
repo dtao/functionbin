@@ -25,6 +25,14 @@ nav {
 
     li {
       @extend h4;
+
+      a[href="/login"] {
+        color: #5cb85c;
+      }
+
+      a[href="/logout"] {
+        color: #d9534f;
+      }
     }
   }
 }
