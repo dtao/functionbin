@@ -7,7 +7,11 @@
 
   %p
     = pluralize(@implementation.upvotes.count, 'upvote')
-    = link_to('Upvote', upvote_implementation_path(@implementation), :class => 'upvote')
+    - if logged_in?
+      - if current_user.upvoted?(@implementation)
+        = disabled_link('Upvoted', :class => 'upvote')
+      - else
+        = link_to('Upvote', upvote_implementation_path(@implementation), :class => 'upvote')
 
 = readonly_code_mirror(:source, @implementation.source)
 

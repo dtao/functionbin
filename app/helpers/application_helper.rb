@@ -6,4 +6,9 @@ module ApplicationHelper
   def readonly_code_mirror(field_name, value=nil, options={})
     code_mirror(field_name, value, options.merge(:'data-readonly' => 'nocursor'))
   end
+
+  def disabled_link(text, options={})
+    class_list = [*options[:class], 'disabled-link'].join(' ')
+    link_to(text, 'javascript:void(0);', options.merge(:class => class_list))
+  end
 end

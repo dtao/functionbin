@@ -44,10 +44,14 @@
 
         = readonly_code_mirror(:example, implementation.source)
 
-      %p
-        = pluralize(implementation.score, 'upvote')
-        = link_to('Upvote', "/implementations/#{implementation.id}/upvote", :class => 'upvote')
-        = link_to(pluralize(implementation.comments_count, 'comment'), implementation)
+        %p
+          = pluralize(implementation.score, 'upvote')
+          - if logged_in?
+            - if current_user.upvoted?(implementation)
+              = disabled_link('Upvoted', :class => 'upvote')
+            - else
+              = link_to('Upvote', upvote_implementation_path(implementation), :class => 'upvote')
+          = link_to(pluralize(implementation.comments_count, 'comment'), implementation)
 
 :javascript
   this.charts = {

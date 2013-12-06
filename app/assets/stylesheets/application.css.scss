@@ -60,6 +60,10 @@ a.action {
   @extend .btn, .btn-sm, .btn-info;
 }
 
+a.disabled-link {
+  @extend .btn-default, .disabled;
+}
+
 #notice {
   @extend .alert, .alert-warning;
 
