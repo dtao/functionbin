@@ -1,4 +1,6 @@
 class ImplementationsController < ApplicationController
+  require_login_for :new, :create, :upvote, :comment
+
   def new
     @function = Function.find(params[:id])
   end
