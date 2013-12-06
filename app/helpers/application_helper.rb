@@ -7,6 +7,10 @@ module ApplicationHelper
     code_mirror(field_name, value, options.merge(:'data-readonly' => 'nocursor'))
   end
 
+  def profile_image(user, size=50)
+    gravatar_image_tag(user.email, :gravatar => { :size => size })
+  end
+
   def link_to_record(record, text=record.name)
     link_to(text, record)
   end

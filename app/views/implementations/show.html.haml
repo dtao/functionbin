@@ -20,7 +20,7 @@
 - @implementation.comments.each do |comment|
   .comment
     %h3
-      = gravatar_image_tag(comment.user.email, :gravatar => { :size => 50 })
+      = profile_image(comment.user)
       = link_to_record(comment.user)
       %small= timestamp(comment)
     %p= comment.content

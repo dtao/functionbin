@@ -1,6 +1,6 @@
 - content_for(:header) do
   %h1
-    = gravatar_image_tag(@user.email, :gravatar => { :size => 100 })
+    = profile_image(@user, 100)
     = @user.name
     %span.score= @user.score
     %small= "Joined #{timestamp(@user)}"

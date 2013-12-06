@@ -22,7 +22,7 @@
     - @users.each do |user|
       %tr
         %td
-          = gravatar_image_tag(user.email, :gravatar => { :size => 50 })
+          = profile_image(user)
           = link_to_record(user)
         %td
           %span.score= user.score

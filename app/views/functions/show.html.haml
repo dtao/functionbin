@@ -39,7 +39,7 @@
     - @implementations.each do |implementation|
       .implementation
         %h3
-          = gravatar_image_tag(implementation.user.email, :gravatar => { :size => 50 })
+          = profile_image(implementation.user)
           = link_to_record(implementation.user)
           %small= timestamp(implementation)
 
