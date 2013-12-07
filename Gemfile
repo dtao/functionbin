@@ -12,6 +12,9 @@ gem 'omniauth-github'
 # Boy, do I hate whitespace!
 gem 'strip_attributes'
 
+# Let's version functions and implementations (for now)
+gem 'paper_trail', '>= 3.0.0.rc2'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

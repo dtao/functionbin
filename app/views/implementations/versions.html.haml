@@ -1,0 +1,17 @@
+- content_for(:header) do
+  %h1
+    = link_to_record(@implementation.function)
+    %small
+      Implemented by
+      = link_to_record(@implementation.user)
+    %small= back_link('Back', implementation_path(@implementation))
+
+%h3 Current
+
+= readonly_code_mirror(:current, @implementation.source)
+
+- @versions.each do |version|
+  .implementation-version
+    %h3= timestamp(version)
+
+    = readonly_code_mirror("version-#{version}", version.reify.source)

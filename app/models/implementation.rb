@@ -4,6 +4,8 @@ class Implementation < ActiveRecord::Base
   has_many :upvotes
   has_many :comments, :as => :parent
 
+  has_paper_trail
+
   validates_presence_of :user_id
   validates_presence_of :function_id
   validates_presence_of :source, :message => 'An implementation without any code? Nice try.'

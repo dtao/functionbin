@@ -3,6 +3,7 @@ class ImplementationsController < ApplicationController
 
   def new
     @function = Function.find(params[:id])
+    @implementation = Implementation.new(:function => @function)
   end
 
   def show
@@ -13,6 +14,33 @@ class ImplementationsController < ApplicationController
   def create
     implementation = current_user.implementations.create!(implementation_params)
     redirect_to(implementation.function)
+  end
+
+  def edit
+    @implementation = Implementation.find(params[:id])
+    @function = @implementation.function
+
+    if current_user != @implementation.user
+      alert("You can't edit someone else's implementation!")
+      return redirect_to(@implementation)
+    end
+  end
+
+  def update
+    @implementation = Implementation.find(params[:id])
+
+    if current_user != @implementation.user
+      alert("You can't edit someone else's implementation!")
+      return redirect_to(@implementation)
+    end
+
+    @implementation.update!(implementation_params)
+    redirect_to(@implementation)
+  end
+
+  def versions
+    @implementation = Implementation.find(params[:id])
+    @versions = @implementation.versions
   end
 
   def upvote

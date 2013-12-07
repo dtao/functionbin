@@ -53,6 +53,8 @@
               = disabled_link('Upvoted', :class => 'upvote')
             - else
               = link_to('Upvote', upvote_implementation_path(implementation), :class => 'upvote')
+            - if current_user == implementation.user
+              = link_to('Edit', edit_implementation_path(implementation), :class => 'edit')
           = link_to(pluralize(implementation.comments_count, 'comment'), implementation)
 
 :javascript

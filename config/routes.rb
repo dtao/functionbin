@@ -13,6 +13,7 @@ FunctionBin::Application.routes.draw do
   get 'implementations/:id/upvote'   => 'implementations#upvote', :as => :upvote_implementation
   post 'functions/:id/comment'       => 'functions#comment', :as => :comment_on_function
   post 'implementations/:id/comment' => 'implementations#comment', :as => :comment_on_implementation
+  get 'implementations/:id/versions' => 'implementations#versions', :as => :implementation_versions
   get '/auth/:provider/callback'     => 'auth#authenticate', :as => :authenticate
   get '/api/:functions.js'           => 'api#index'
 

@@ -11,6 +11,10 @@ module ApplicationHelper
     render(:partial => 'partials/about_info')
   end
 
+  def edit_form(record)
+    preserve(render(:partial => "#{record.class.table_name}/form"))
+  end
+
   def code_mirror(field_name, value=nil, options={})
     text_area_tag(field_name, value, options_with_class(options, 'code-mirror-placeholder'))
   end
@@ -33,6 +37,13 @@ module ApplicationHelper
 
   def link_to_record(record, text=record.name)
     link_to(text, record)
+  end
+
+  def versions_link(implementation)
+    return nil if implementation.versions.count < 1
+    link_to(pluralize(implementation.versions.count, 'version'), implementation_versions_path(implementation), {
+      :class => 'versions'
+    })
   end
 
   def action_link(text, path, options={})

@@ -3,6 +3,8 @@ class Function < ActiveRecord::Base
   has_many :implementations
   has_many :comments, :as => :parent
 
+  has_paper_trail
+
   validates_presence_of   :user_id
   validates_presence_of   :name,    :message => 'Every function needs to have a name.'
   validates_uniqueness_of :name,    :message => 'A function already exists with that name.'

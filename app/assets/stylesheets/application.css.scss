@@ -157,6 +157,14 @@ a.upvote {
   @extend .btn, .btn-xs, .btn-success;
 }
 
+a.edit {
+  @extend .btn, .btn-xs, .btn-info;
+}
+
+a.versions {
+  @extend .btn, .btn-xs, .btn-default;
+}
+
 a.action {
   @extend .btn, .btn-sm, .btn-info;
 }

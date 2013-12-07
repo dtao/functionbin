@@ -13,6 +13,9 @@
         = disabled_link('Upvoted', :class => 'upvote')
       - else
         = link_to('Upvote', upvote_implementation_path(@implementation), :class => 'upvote')
+      - if current_user == @implementation.user
+        = link_to('Edit', edit_implementation_path(@implementation), :class => 'edit')
+      = versions_link(@implementation)
 
 = readonly_code_mirror(:source, @implementation.source)
 

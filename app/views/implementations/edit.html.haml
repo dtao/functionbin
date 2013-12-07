@@ -1,8 +1,8 @@
 - content_for(:header) do
   %h1
-    Implement
-    = link_to(@function.name, @function)
-    %small= back_link('Functions', functions_path)
+    Edit implementation for
+    = link_to_record(@function)
+    %small= back_link('Back', implementation_path(@implementation))
 
   %p= @function.description
 
