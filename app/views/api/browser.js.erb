@@ -1,0 +1,10 @@
+(function() {
+<% @implementations.each do |implementation| -%>
+  (function() {
+    <%=raw implementation.source.gsub(/\n/, "\n    ") %>
+
+    this.<%=raw implementation.function.name %> = <%=raw implementation.function.name %>;
+  }());
+
+<% end -%>
+}).call(this);

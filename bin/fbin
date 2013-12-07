@@ -8,15 +8,22 @@ var http      = require('http'),
 
 commander
   .version(pkgInfo.version)
-  .option('-h, --host <host>', 'The host to download from (defaults to functionbin.herokuapp.com)')
-  .option('-o, --output <path>', 'Where to save the downloaded functions')
+  .option('-h, --host <host>', 'The host to download from (defaults to "functionbin.herokuapp.com")')
+  .option('-f, --format <format>', 'The format you want the JavaScript in (either "node" [default] or "browser")')
+  .option('-o, --output <path>', 'Where to save the downloaded functions (defaults to "dependencies.js")')
   .parse(process.argv);
 
-var baseUrl = 'http://' + (commander.host || 'functionbin.herokuapp.com') + '/api/',
-    outputPath = path.join(process.cwd(), commander.output || 'dependencies.js'),
-    functionIds = process.argv.pop();
+if (process.argv.length <= 2) {
+  commander.help();
+  process.exit();
+}
 
-http.get(baseUrl + 'node.js?ids=' + functionIds, function(response) {
+var baseUrl = 'http://' + (commander.host || 'functionbin.herokuapp.com') + '/api/',
+    format = commander.format || 'node',
+    outputPath = path.join(process.cwd(), commander.output || 'dependencies.js'),
+    functionNames = process.argv.pop().split(',');
+
+http.get(baseUrl + functionNames.join('+') + '.js?format=' + format, function(response) {
   console.log('Received response - writing to ' + outputPath + '...');
   var stream = fs.createWriteStream(outputPath);
   response.pipe(stream);
