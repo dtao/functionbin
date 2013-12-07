@@ -7,6 +7,10 @@ module ApplicationHelper
     render(:partial => 'partials/site_footer')
   end
 
+  def about_info
+    render(:partial => 'partials/about_info')
+  end
+
   def code_mirror(field_name, value=nil, options={})
     text_area_tag(field_name, value, options_with_class(options, 'code-mirror-placeholder'))
   end

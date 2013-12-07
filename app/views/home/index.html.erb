@@ -1,35 +1,45 @@
-<% if !logged_in? %>
-  <div class="login-prompt">
-    <p><%= link_to('Log in', login_path) %> to continue.</p>
-  </div>
-<% end %>
+<div class="two-column">
+  <div class="column">
+    <h2>What is this?</h2>
 
-<h2>Recent Proposals</h2>
+    <%= about_info %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Function</th>
-      <th>Description</th>
-      <th>Proposed</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @functions.each do |function| %>
-      <tr>
-        <td><%= link_to(function.name, function) %></td>
-        <td><%= function.description %></td>
-        <td>
-          by
-          <%= link_to(function.user.name, function.user) %>
-          <%= timestamp(function) %>
-        </td>
-      </tr>
+    <% if !logged_in? %>
+      <div class="login-prompt">
+        <p><%= link_to('Log in', login_path) %> to continue.</p>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<% if logged_in? %>
-  <%= action_link('Propose a new function', new_function_path) %>
-<% end %>
+  <div class="column">
+    <h2>Recent Proposals</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Function</th>
+          <th>Description</th>
+          <th>Proposed</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @functions.each do |function| %>
+          <tr>
+            <td><%= link_to(function.name, function) %></td>
+            <td><%= function.description %></td>
+            <td>
+              by
+              <%= link_to(function.user.name, function.user) %>
+              <%= timestamp(function) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <% if logged_in? %>
+      <%= action_link('Propose a new function', new_function_path) %>
+    <% end %>
+  </div>
+</div>
