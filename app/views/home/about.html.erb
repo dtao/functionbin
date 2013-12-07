@@ -1,5 +1,8 @@
 <% content_for(:header) do %>
-  <h1>About</h1>
+  <h1>
+    About
+    <small><%= back_link %></small>
+  </h1>
 
   <p>
     <strong>FunctionBin</strong> is a repository for JavaScript functions. Think of it as a package
@@ -7,12 +10,11 @@
     components. For more on the motivation behind this project, see my post
     <%= link_to('Functions over (JavaScript) libraries', 'http://danieltao.com/ideas/functions-over-libraries') %>.
   </p>
+  <p>
+    You can <%= link_to('propose a function', new_function_path) %>, or take a stab at implementing
+    <%= link_to("a function that's already been proposed", functions_path) %>.
+  </p>
 <% end %>
-
-<p>
-  You can <%= link_to('propose a function', new_function_path) %>, or take a stab at implementing
-  <%= link_to("a function that's already been proposed", functions_path) %>.
-</p>
 
 <h2>Depending on these</h2>
 
@@ -38,7 +40,7 @@
 <h3>Node.js</h3>
 
 <p>
-  By default, the JavaScript downloaded will be in a format suitable for Node applications; i.e.:
+  By default, the JavaScript downloaded will be in a format suitable for Node projects; i.e.:
 </p>
 
 <%= readonly_code_mirror(:node_format, render(:partial => 'partials/node_format_example.js')) %>
