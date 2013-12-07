@@ -9,12 +9,12 @@ FunctionBin::Application.routes.draw do
   get '/about'      => 'home#about'
 
   # Named routes
-  get 'functions/:id/implement' => 'implementations#new', :as => :implement_function
-  get 'implementations/:id/upvote' => 'implementations#upvote', :as => :upvote_implementation
-  post 'functions/:id/comment' => 'functions#comment', :as => :comment_on_function
+  get 'functions/:id/implement'      => 'implementations#new', :as => :implement_function
+  get 'implementations/:id/upvote'   => 'implementations#upvote', :as => :upvote_implementation
+  post 'functions/:id/comment'       => 'functions#comment', :as => :comment_on_function
   post 'implementations/:id/comment' => 'implementations#comment', :as => :comment_on_implementation
-  get '/auth/:provider/callback' => 'auth#authenticate', :as => :authenticate
-  get '/api/:functions.js' => 'api#index'
+  get '/auth/:provider/callback'     => 'auth#authenticate', :as => :authenticate
+  get '/api/:functions.js'           => 'api#index'
 
   # Resource routes
   resources :users
