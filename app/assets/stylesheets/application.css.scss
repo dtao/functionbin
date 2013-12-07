@@ -14,6 +14,27 @@
   #{$property}: -webkit-calc(#{$value});
 }
 
+$desktop-width: 750px + (252px * 2);
+$widescreen-width: 1170px + (252px * 2);
+
+@mixin mobile {
+  @media all and (max-width: $desktop-width - 1) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media all and (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin widescreen {
+  @media all and (min-width: $widescreen-width) {
+    @content;
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -21,7 +42,8 @@ html, body {
   width: 100%;
 }
 
-nav {
+body > nav {
+  display: none;
   position: fixed;
   top: 20px;
   left: 20px;
@@ -32,31 +54,30 @@ nav {
 
     li {
       @extend h4;
-
-      a[href="/login"] {
-        color: #5cb85c;
-      }
-
-      a[href="/logout"] {
-        color: #d9534f;
-      }
     }
+  }
+
+  @include desktop {
+    display: block;
   }
 }
 
 main {
   @extend .container;
 
-  border-left: 12px solid black;
-  margin-left: 240px;
   min-height: 100%;
 
-  @media all and (min-width: 1170px + (252px * 2)) {
+  @include desktop {
+    border-left: 12px solid black;
+    margin-left: 240px;
+
+    @include calc(max-width, "100% - 252px");
+  }
+
+  @include widescreen {
     width: auto;
     margin-right: 252px;
   }
-
-  @include calc(max-width, "100% - 252px");
 
   & > header {
     @extend .page-header;
@@ -75,13 +96,25 @@ main {
     }
   }
 
+  // & > nav {
+  //   @extend .navbar;
+
+  //   display: none;
+
+  //   ul {
+  //     @extend .nav, .navbar-nav;
+  //   }
+
+  //   @include mobile {
+  //     display: block;
+  //   }
+  // }
+
   & > footer {
     @extend .small, .text-muted;
 
+    display: none;
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 200px;
 
     p {
       margin-bottom: 1ex;
@@ -90,6 +123,23 @@ main {
     p:last-child {
       margin-bottom: 0;
     }
+
+    @include desktop {
+      display: block;
+      bottom: 20px;
+      left: 20px;
+      width: 200px;
+    }
+  }
+}
+
+nav {
+  a[href="/login"] {
+    color: #5cb85c;
+  }
+
+  a[href="/logout"] {
+    color: #d9534f;
   }
 }
 
