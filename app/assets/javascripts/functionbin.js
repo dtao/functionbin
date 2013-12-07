@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
 
   forEach(document.querySelectorAll('textarea.code-mirror-placeholder'), function(textarea) {
     var options = {
-      mode: 'javascript',
+      mode: textarea.getAttribute('data-mode') || 'javascript',
       lineNumbers: true
     };
 

@@ -1,0 +1,57 @@
+<% content_for(:header) do %>
+  <h1>About</h1>
+
+  <p>
+    <strong>FunctionBin</strong> is a repository for JavaScript functions. Think of it as a package
+    manager&mdash;like NPM or Bower&mdash;but just for <em>functions</em> rather than libraries or
+    components. For more on the motivation behind this project, see my post
+    <%= link_to('Functions over (JavaScript) libraries', 'http://danieltao.com/ideas/functions-over-libraries') %>.
+  </p>
+<% end %>
+
+<p>
+  You can <%= link_to('propose a function', new_function_path) %>, or take a stab at implementing
+  <%= link_to("a function that's already been proposed", functions_path) %>.
+</p>
+
+<h2>Depending on these</h2>
+
+<p>
+  To pull some functions from <strong>FunctionBin</strong> into your application, you can use the
+  NPM package <strong>functionbin</strong>.
+</p>
+
+<pre><code>npm install -g functionbin</code></pre>
+
+<p>
+  This will install an executable called <strong>fbin</strong> on your system. Here's an example
+  usage:
+</p>
+
+<pre><code>fbin -o fbin.js function1,function2</code></pre>
+
+<p>
+  As you probably predicted, this will download the code for the three specified functions to a file
+  called fbin.js (The default if you don't specify the <code>-o</code> option is dependencies.js).
+</p>
+
+<h3>Node.js</h3>
+
+<p>
+  By default, the JavaScript downloaded will be in a format suitable for Node applications; i.e.:
+</p>
+
+<%= readonly_code_mirror(:node_format, render(:partial => 'partials/node_format_example.js')) %>
+
+<h3>Browsers</h3>
+
+<p>You can opt for a browser-style format instead by specifying the <code>-f</code> option:</p>
+
+<pre><code>fbin -f browser function1,function2</code></pre>
+
+<p>
+  You could also, <em>for experimentation only</em>, simply add a <code>&lt;script&gt;</code> tag to
+  your page with a URL specifying the functions you want, like so:
+</p>
+
+<%= readonly_code_mirror(:browser_format, render(:partial => 'partials/script_tag_example.html'), :'data-mode' => 'htmlmixed') %>

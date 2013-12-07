@@ -12,6 +12,8 @@
 //
 //= require lib/codemirror
 //= require lib/codemirror/javascript
+//= require lib/codemirror/xml
+//= require lib/codemirror/htmlmixed
 //= require lib/codemirror/placeholder
 //= require lib/highcharts/standalone-framework
 //= require lib/highcharts

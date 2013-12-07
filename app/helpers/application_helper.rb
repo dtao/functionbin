@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def code_mirror(field_name, value=nil, options={})
-    text_area_tag(field_name, value, options.merge(:class => 'code-mirror-placeholder'))
+    text_area_tag(field_name, value, options_with_class(options, 'code-mirror-placeholder'))
   end
 
   def readonly_code_mirror(field_name, value=nil, options={})

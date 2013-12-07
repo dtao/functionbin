@@ -6,6 +6,7 @@ FunctionBin::Application.routes.draw do
   match '/login'    => 'home#login',    :via => [:get, :post]
   match '/register' => 'home#register', :via => [:get, :post]
   get '/logout'     => 'home#logout'
+  get '/about'      => 'home#about'
 
   # Named routes
   get 'functions/:id/implement' => 'implementations#new', :as => :implement_function
