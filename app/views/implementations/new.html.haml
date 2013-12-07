@@ -2,6 +2,7 @@
   %h1
     Implement
     = link_to(@function.name, @function)
+    %small= back_link('Functions', functions_path)
 
   %p= @function.description
 

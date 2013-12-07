@@ -1,17 +1,21 @@
+<% content_for(:header) do %>
+  <h1>
+    Specify a function
+    <small><%= back_link %></small>
+  </h1>
+<% end %>
+
 <%= form_for(Function.new) do |f| %>
-  <fieldset>
-    <legend>Specify a function</legend>
-    <div class="field">
-      <%= f.text_field(:name, :placeholder => 'Enter a name') %>
-    </div>
-    <div class="field">
-      <%= f.text_area(:description, :placeholder => 'Enter a description') %>
-    </div>
-    <div class="field">
-      <%= code_mirror(:'function[example]', nil, :placeholder => 'Enter some example usage') %>
-    </div>
-    <div class="field">
-      <%= f.submit %>
-    </div>
-  </fieldset>
+  <div class="field">
+    <%= f.text_field(:name, :placeholder => 'Enter a name') %>
+  </div>
+  <div class="field">
+    <%= f.text_area(:description, :placeholder => 'Enter a description') %>
+  </div>
+  <div class="field">
+    <%= code_mirror(:'function[example]', nil, :placeholder => 'Enter some example usage') %>
+  </div>
+  <div class="field">
+    <%= f.submit %>
+  </div>
 <% end %>

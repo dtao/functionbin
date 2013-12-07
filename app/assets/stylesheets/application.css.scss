@@ -14,7 +14,7 @@
   #{$property}: -webkit-calc(#{$value});
 }
 
-$desktop-width: 750px + (252px * 2);
+$desktop-width: 750px + 252px;
 $widescreen-width: 1170px + (252px * 2);
 
 @mixin mobile {
@@ -87,6 +87,10 @@ main {
       font-style: normal;
     }
 
+    h1 small {
+      white-space: nowrap;
+    }
+
     p {
       @extend .lead;
     }
@@ -95,20 +99,6 @@ main {
       vertical-align: bottom;
     }
   }
-
-  // & > nav {
-  //   @extend .navbar;
-
-  //   display: none;
-
-  //   ul {
-  //     @extend .nav, .navbar-nav;
-  //   }
-
-  //   @include mobile {
-  //     display: block;
-  //   }
-  // }
 
   & > footer {
     @extend .small, .text-muted;
@@ -169,6 +159,25 @@ a.upvote {
 
 a.action {
   @extend .btn, .btn-sm, .btn-info;
+}
+
+a.back-link {
+  @extend .text-muted;
+
+  font-size: 60%;
+
+  &:before {
+    content: "\226a" " ";
+  }
+
+  &:hover {
+    color: #888;
+    text-decoration: none;
+  }
+
+  @include desktop {
+    display: none;
+  }
 }
 
 a.disabled-link {

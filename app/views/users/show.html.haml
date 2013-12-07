@@ -4,6 +4,7 @@
     = @user.name
     %span.score= @user.score
     %small= "Joined #{timestamp(@user)}"
+    %small= back_link('Users', users_path)
 
 .two-column
   .column

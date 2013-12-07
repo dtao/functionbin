@@ -1,5 +1,7 @@
 - content_for(:header) do
-  %h1 Functions
+  %h1
+    Functions
+    %small= back_link
 
 = table_filter('function', 'name')
 

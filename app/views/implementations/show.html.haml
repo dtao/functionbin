@@ -4,6 +4,7 @@
     %small
       Implemented by
       = link_to_record(@implementation.user)
+    %small= back_link('Functions', functions_path)
 
   %p
     = pluralize(@implementation.upvotes.count, 'upvote')

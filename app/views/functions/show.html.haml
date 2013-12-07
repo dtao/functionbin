@@ -4,6 +4,7 @@
     %small
       Proposed by
       = link_to_record(@function.user)
+    %small= back_link('Functions', functions_path)
 
   %p= @function.description
 

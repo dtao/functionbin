@@ -35,6 +35,10 @@ module ApplicationHelper
     link_to(text, path, options_with_class(options, 'action'))
   end
 
+  def back_link(text='Back', path=root_path, options={})
+    link_to(text, path, options_with_class(options, 'back-link'))
+  end
+
   def disabled_link(text, options={})
     link_to(text, 'javascript:void(0);', options_with_class(options, 'disabled-link'))
   end

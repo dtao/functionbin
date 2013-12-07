@@ -1,5 +1,7 @@
 - content_for(:header) do
-  %h1 Users
+  %h1
+    Users
+    %small= back_link
 
 = table_filter('user', 'name')
 
