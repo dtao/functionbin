@@ -13,17 +13,34 @@ commander
   .option('-o, --output <path>', 'Where to save the downloaded functions (defaults to "dependencies.js")')
   .parse(process.argv);
 
-if (process.argv.length <= 2) {
-  commander.help();
+var host = (commander.host || 'functionb.in').split(':'),
+    domain = host[0],
+    port = host[1] || 80,
+    format = commander.format || 'node',
+    binfilePath = path.join(process.cwd(), 'Binfile'),
+    outputPath = path.join(process.cwd(), commander.output || 'dependencies.js'),
+    binfile;
+
+if (fs.existsSync(binfilePath)) {
+  binfile = fs.readFileSync(binfilePath, 'utf-8');
+
+} else {
+  console.log('There is no Binfile in the current directory.');
   process.exit();
 }
 
-var baseUrl = 'http://' + (commander.host || 'functionbin.herokuapp.com') + '/api/',
-    format = commander.format || 'node',
-    outputPath = path.join(process.cwd(), commander.output || 'dependencies.js'),
-    functionNames = process.argv.pop().split(',');
+var postOptions = {
+  method: 'POST',
+  host: domain,
+  port: port,
+  path: '/api/binfile?format=' + format,
+  headers: {
+    'Content-Type': 'application/json',
+    'Content-Length': binfile.length
+  }
+};
 
-http.get(baseUrl + functionNames.join('+') + '.js?format=' + format, function(response) {
+var request = http.request(postOptions, function(response) {
   console.log('Received response - writing to ' + outputPath + '...');
   var stream = fs.createWriteStream(outputPath);
   response.pipe(stream);
@@ -33,3 +50,6 @@ http.get(baseUrl + functionNames.join('+') + '.js?format=' + format, function(re
     console.log('Done.');
   });
 });
+
+request.write(binfile);
+request.end();

@@ -16,6 +16,7 @@ FunctionBin::Application.routes.draw do
   get 'implementations/:id/versions' => 'implementations#versions', :as => :implementation_versions
   get '/auth/:provider/callback'     => 'auth#authenticate', :as => :authenticate
   get '/api/:functions.js'           => 'api#index'
+  post '/api/binfile'                => 'api#binfile'
 
   # Resource routes
   resources :users
