@@ -40,7 +40,7 @@ class ImplementationsController < ApplicationController
 
   def versions
     @implementation = Implementation.find(params[:id])
-    @versions = @implementation.versions
+    @versions = @implementation.versions.reverse
   end
 
   def upvote

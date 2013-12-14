@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def versions_link(implementation)
     return nil if implementation.versions.count < 1
-    link_to(pluralize(implementation.versions.count, 'version'), implementation_versions_path(implementation), {
+    link_to(pluralize(implementation.versions.count + 1, 'version'), implementation_versions_path(implementation), {
       :class => 'versions'
     })
   end

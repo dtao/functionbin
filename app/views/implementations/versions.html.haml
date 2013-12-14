@@ -6,12 +6,16 @@
       = link_to_record(@implementation.user)
     %small= back_link('Back', implementation_path(@implementation))
 
-%h3 Current
+%h3
+  = "Version #{@implementation.versions.count + 1}"
+  %small Current
 
 = readonly_code_mirror(:current, @implementation.source)
 
 - @versions.each do |version|
   .implementation-version
-    %h3= timestamp(version)
+    %h3
+      = "Version #{version.index + 1}"
+      %small= timestamp(version)
 
-    = readonly_code_mirror("version-#{version}", version.reify.source)
+    = readonly_code_mirror("version-#{version.index + 1}", version.reify.source)
